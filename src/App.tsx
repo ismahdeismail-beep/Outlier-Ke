@@ -10,6 +10,7 @@ import { Navbar } from './components/sections/Navbar';
 import { Hero } from './components/sections/Hero';
 import { Stats } from './components/sections/Stats';
 import { Services } from './components/sections/Features';
+import { HowItWorks } from './components/sections/HowItWorks';
 import { Footer } from './components/sections/Footer';
 
 export default function App() {
@@ -20,6 +21,7 @@ export default function App() {
         <Hero />
         <Stats />
         <Services />
+        <HowItWorks />
       </main>
       <Footer />
     </div>

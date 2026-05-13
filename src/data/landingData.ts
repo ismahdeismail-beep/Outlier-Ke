@@ -1,12 +1,12 @@
 export const statsData = [
-  { label: "Experts", value: "100K+" },
-  { label: "Countries", value: "50" },
-  { label: "Paid Out", value: "$500M" },
-  { label: "Annotations", value: "13B" },
+  { label: "Users Assisted", value: "3,200+" },
+  { label: "KES Paid Out", value: "120M+" },
+  { label: "Supported Platforms", value: "14" },
+  { label: "Support", value: "24/7" },
 ];
 
-export const featuresData = [
-  { title: "Flexible Work", description: "Work when and where you want.", icon: "zap" },
-  { title: "AI-Powered", description: "State-of-the-art tools.", icon: "brain" },
-  { title: "Global Community", description: "Connect with experts worldwide.", icon: "globe" },
+export const servicesData = [
+  { title: "Account Onboarding", description: "Seamless setup for region-restricted platforms.", icon: "zap" },
+  { title: "Identity Verification", description: "Expert assistance with platform KYC.", icon: "brain" },
+  { title: "Payout Processing", description: "Reliable M-Pesa & Bank transfers.", icon: "globe" },
 ];

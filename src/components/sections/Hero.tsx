@@ -11,14 +11,14 @@ export function Hero() {
         className="max-w-4xl mx-auto px-6"
       >
         <h1 className="font-display text-5xl md:text-7xl font-bold tracking-tight mb-8">
-          Train the Next Generation of AI
+          Access Global AI Opportunities From Kenya
         </h1>
         <p className="max-w-2xl mx-auto text-xl text-gray-400 mb-10">
-          Earn remotely by training AI models that shape the future.
+          We help Kenyan professionals access region-restricted AI work platforms through onboarding, verification, account support, and secure payouts.
         </p>
         <div className="flex gap-4 justify-center">
-            <Button variant="primary">Get Started</Button>
-            <Button variant="outline">Learn More</Button>
+            <Button variant="primary">Apply Now</Button>
+            <Button variant="outline">How it Works</Button>
         </div>
       </motion.div>
     </section>

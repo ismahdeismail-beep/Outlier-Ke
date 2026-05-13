@@ -9,7 +9,7 @@
 import { Navbar } from './components/sections/Navbar';
 import { Hero } from './components/sections/Hero';
 import { Stats } from './components/sections/Stats';
-import { Features } from './components/sections/Features';
+import { Services } from './components/sections/Features';
 import { Footer } from './components/sections/Footer';
 
 export default function App() {
@@ -19,7 +19,7 @@ export default function App() {
       <main>
         <Hero />
         <Stats />
-        <Features />
+        <Services />
       </main>
       <Footer />
     </div>

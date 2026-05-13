@@ -23,6 +23,23 @@ async function startServer() {
     res.json({ paymentUrl: "https://pay.lipana.dev/mock-url" });
   });
 
+  // Webhook endpoint for Lipana.dev to confirm payments
+  app.post("/api/payments/webhook", (req, res) => {
+    const webhookData = req.body;
+
+    // TODO: SECURITY VERIFICATION
+    // You MUST verify the request authenticity using the signature 
+    // provided in the headers (Lipana.dev should provide a way to verify this).
+    
+    console.log("Webhook received:", webhookData);
+
+    // Process payment success (update database, etc.)
+    // ...
+
+    // Always respond with 200 OK quickly to prevent timeouts
+    res.status(200).send("Webhook received");
+  });
+
   // Vite middleware for development
   if (process.env.NODE_ENV !== "production") {
     const vite = await createViteServer({

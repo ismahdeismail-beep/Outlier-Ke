@@ -1,8 +1,9 @@
+import React from 'react';
 import { SectionHeading } from "../ui/SectionHeading";
 import { servicesData } from "../../data/landingData";
 import { Zap, Brain, Globe } from "lucide-react";
 
-const iconMap: Record<string, JSX.Element> = {
+const iconMap: Record<string, React.JSX.Element> = {
     zap: <Zap className="w-6 h-6 text-blue-500" />,
     brain: <Brain className="w-6 h-6 text-blue-500" />,
     globe: <Globe className="w-6 h-6 text-blue-500" />,

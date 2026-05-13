@@ -18,6 +18,21 @@ export function ApplyNowWizard({ onClose }: { onClose: () => void }) {
         }, { merge: true });
     };
 
+    const handlePay = async () => {
+        if (!auth.currentUser) return;
+        try {
+            const response = await fetch('/api/payments/create', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ plan: formData.plan, amount: 43, userId: auth.currentUser.uid })
+            });
+            const data = await response.json();
+            window.location.href = data.paymentUrl;
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
     const nextStep = () => {
         const next = step + 1;
         saveProgress(next);
@@ -69,13 +84,13 @@ export function ApplyNowWizard({ onClose }: { onClose: () => void }) {
                         {['Basic', 'Priority', 'Managed'].map(p => (
                             <button key={p} onClick={()=>setFormData({...formData, plan: p})} className={`p-4 border rounded-lg text-left ${formData.plan === p ? 'border-blue-500 bg-blue-500/10' : 'border-white/10 bg-white/5'}`}>
                                 <div className="font-bold">{p} Access</div>
-                                <div className="text-xs text-gray-400">Processing: {p === 'Basic' ? '3-5 days' : '1-2 days'}</div>
+                                <div className="text-xs text-gray-400">Processing: {p === 'Basic' ? '3-5 days' : '1-2 days'} | One-time Fee: $43</div>
                             </button>
                         ))}
                     </div>
                     <div className="flex gap-2">
                         <Button variant="outline" onClick={prevStep} className="w-full">Back</Button>
-                        <Button onClick={nextStep} className="w-full">Pay & Continue</Button>
+                        <Button onClick={handlePay} className="w-full">Pay & Continue</Button>
                     </div>
                 </div>
             )}

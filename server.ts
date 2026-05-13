@@ -25,13 +25,23 @@ async function startServer() {
 
   // Webhook endpoint for Lipana.dev to confirm payments
   app.post("/api/payments/webhook", (req, res) => {
-    const webhookData = req.body;
+    const signature = req.headers['x-lipana-signature']; // Assumed header
+    const secret = process.env.LIPANA_WEBHOOK_SECRET;
 
-    // TODO: SECURITY VERIFICATION
-    // You MUST verify the request authenticity using the signature 
-    // provided in the headers (Lipana.dev should provide a way to verify this).
+    if (!secret || !signature || typeof signature !== 'string') {
+        return res.status(401).send("Unauthorized");
+    }
+
+    // Verify signature (Standard HMAC-SHA256)
+    const crypto = require('crypto');
+    const hmac = crypto.createHmac('sha256', secret);
+    const digest = hmac.update(JSON.stringify(req.body)).digest('hex');
+
+    if (digest !== signature) {
+        return res.status(401).send("Invalid signature");
+    }
     
-    console.log("Webhook received:", webhookData);
+    console.log("Webhook verified and received:", req.body);
 
     // Process payment success (update database, etc.)
     // ...

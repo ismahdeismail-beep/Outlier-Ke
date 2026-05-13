@@ -1,14 +1,19 @@
+import { useState } from "react";
 import { motion } from "motion/react";
 import { Button } from "../ui/Button";
 import { auth } from "../../lib/firebase";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { Modal } from "../ui/Modal";
+import { ApplyNowWizard } from "../ApplyNowWizard";
 
 export function Hero() {
+  const [isWizardOpen, setIsWizardOpen] = useState(false);
+
   const handleSignIn = async () => {
     const provider = new GoogleAuthProvider();
     try {
         await signInWithPopup(auth, provider);
-        alert("Signed in successfully!");
+        setIsWizardOpen(true);
     } catch (error) {
         console.error(error);
     }
@@ -33,6 +38,9 @@ export function Hero() {
             <Button variant="outline" className="w-full sm:w-auto">How it Works</Button>
         </div>
       </motion.div>
+      <Modal isOpen={isWizardOpen} onClose={() => setIsWizardOpen(false)}>
+        <ApplyNowWizard onClose={() => setIsWizardOpen(false)} />
+      </Modal>
     </section>
   );
 }

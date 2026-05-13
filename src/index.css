@@ -17,3 +17,15 @@
   }
 }
 
+@layer components {
+  .form-input {
+    @apply w-full bg-[#1a1a1a] text-white p-4 rounded-xl border border-white/10 focus:border-white/30 focus:outline-none focus:ring-1 focus:ring-white/20 transition-all;
+  }
+  .form-label {
+    @apply block text-xs uppercase tracking-wider text-gray-500 font-semibold mb-2;
+  }
+  .auth-card {
+    @apply w-full max-w-md bg-[#0f0f0f] p-8 rounded-2xl border border-white/5 shadow-2xl;
+  }
+}
+

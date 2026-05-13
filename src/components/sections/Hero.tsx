@@ -4,10 +4,12 @@ import { Button } from "../ui/Button";
 import { auth } from "../../lib/firebase";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { Modal } from "../ui/Modal";
+import { HowItWorksModal } from "../ui/HowItWorksModal";
 import { ApplyNowWizard } from "../ApplyNowWizard";
 
 export function Hero() {
   const [isWizardOpen, setIsWizardOpen] = useState(false);
+  const [isHowItWorksOpen, setIsHowItWorksOpen] = useState(false);
 
   const handleSignIn = async () => {
     const provider = new GoogleAuthProvider();
@@ -35,12 +37,13 @@ export function Hero() {
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button variant="primary" onClick={handleSignIn} className="w-full sm:w-auto">Apply Now</Button>
-            <Button variant="outline" className="w-full sm:w-auto">How it Works</Button>
+            <Button variant="outline" onClick={() => setIsHowItWorksOpen(true)} className="w-full sm:w-auto">How it Works</Button>
         </div>
       </motion.div>
       <Modal isOpen={isWizardOpen} onClose={() => setIsWizardOpen(false)}>
         <ApplyNowWizard onClose={() => setIsWizardOpen(false)} />
       </Modal>
+      <HowItWorksModal isOpen={isHowItWorksOpen} onClose={() => setIsHowItWorksOpen(false)} />
     </section>
   );
 }
